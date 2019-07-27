@@ -1,6 +1,6 @@
 package pers.fancy.chat.task;
 
-import pers.fancy.chat.bootstrap.data.InChatToDataBaseService;
+import pers.fancy.chat.bootstrap.data.MessagePersistService;
 import pers.fancy.chat.common.constant.LogConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,8 @@ import java.util.concurrent.FutureTask;
 
 /**
  * 数据异步转移方法
+ *
+ * @author 李醴茝
  */
 public class DataAsynchronousTask {
 
@@ -21,10 +23,10 @@ public class DataAsynchronousTask {
     /**
      * 用户读数据接口伪实现
      */
-    private final InChatToDataBaseService inChatToDataBaseService;
+    private final MessagePersistService inChatToDataBaseService;
 
 
-    public DataAsynchronousTask(InChatToDataBaseService inChatToDataBaseService) {
+    public DataAsynchronousTask(MessagePersistService inChatToDataBaseService) {
         this.inChatToDataBaseService = inChatToDataBaseService;
     }
 

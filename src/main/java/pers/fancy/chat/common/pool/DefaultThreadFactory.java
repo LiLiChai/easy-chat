@@ -3,9 +3,10 @@ package pers.fancy.chat.common.pool;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 /**
- * Create by UncleCatMySelf in 2018/12/06
- **/
+ * @author 李醴茝
+ */
 public class DefaultThreadFactory implements ThreadFactory {
 
     private static final AtomicInteger poolNumber = new AtomicInteger(1);

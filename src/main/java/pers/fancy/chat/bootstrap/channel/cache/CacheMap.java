@@ -6,6 +6,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 
+/**
+ * @author 李醴茝
+ */
 public class CacheMap<K,V> {
 
     private ConcurrentHashMap<K,Node<K,V>> datas = new ConcurrentHashMap<>();

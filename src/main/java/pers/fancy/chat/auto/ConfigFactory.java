@@ -1,8 +1,8 @@
 package pers.fancy.chat.auto;
 
 import pers.fancy.chat.bootstrap.channel.http.FromServerService;
-import pers.fancy.chat.bootstrap.data.InChatToDataBaseService;
-import pers.fancy.chat.bootstrap.verify.InChatVerifyService;
+import pers.fancy.chat.bootstrap.data.MessagePersistService;
+import pers.fancy.chat.bootstrap.verify.VerifyService;
 import pers.fancy.chat.common.bean.InitNetty;
 
 /**
@@ -13,10 +13,10 @@ public class ConfigFactory {
     public static String RedisIP;
 
     /** 用户校验伪接口 */
-    public static InChatVerifyService inChatVerifyService;
+    public static VerifyService inChatVerifyService;
 
     /** 用户获取数据伪接口 */
-    public static InChatToDataBaseService inChatToDataBaseService;
+    public static MessagePersistService inChatToDataBaseService;
 
     /** 系统信息枚举服务接口 */
     public static FromServerService fromServerService;

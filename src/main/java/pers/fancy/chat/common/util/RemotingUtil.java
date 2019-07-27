@@ -1,4 +1,4 @@
-package pers.fancy.chat.common.utils;
+package pers.fancy.chat.common.util;
 
 
 import org.slf4j.Logger;

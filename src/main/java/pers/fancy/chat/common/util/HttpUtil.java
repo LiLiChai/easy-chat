@@ -1,4 +1,4 @@
-package pers.fancy.chat.common.utils;
+package pers.fancy.chat.common.util;
 
 import pers.fancy.chat.common.bean.vo.SendServerVO;
 import pers.fancy.chat.common.constant.CommonConstant;
@@ -41,9 +41,9 @@ public class HttpUtil {
         String content = msg.content().toString(CharsetUtil.UTF_8);
         String[] stars = content.split("&");
         for (int i = 0, len = stars.length; i < len; i++) {
-            String item = stars[i].toString();
+            String item = stars[i];
             String firstType = item.substring(0, 5);
-            String value = item.substring(6, item.length());
+            String value = item.substring(6);
             if (CommonConstant.TOKEN.equals(firstType)) {
                 //Token
                 sendServerVO.setToken(value);

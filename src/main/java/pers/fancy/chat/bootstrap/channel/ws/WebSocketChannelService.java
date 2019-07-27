@@ -8,6 +8,9 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import java.util.Map;
 
 
+/**
+ * @author 李醴茝
+ */
 public class WebSocketChannelService implements WsChannelService {
 
     @Override

@@ -3,7 +3,10 @@ package pers.fancy.chat.users;
 import pers.fancy.chat.common.bean.InitNetty;
 
 
-public class MyInit extends InitNetty {
+/**
+ * @author 李醴茝
+ */
+public class ChatConfigInit extends InitNetty {
 
     @Override
     public int getWebport() {

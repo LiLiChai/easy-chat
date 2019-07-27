@@ -1,4 +1,4 @@
-package pers.fancy.chat.common.ip;
+package pers.fancy.chat.common.util;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -6,7 +6,10 @@ import java.net.NetworkInterface;
 import java.util.Enumeration;
 
 
-public class IpUtils {
+/**
+ * @author 李醴茝
+ */
+public class IpUtil {
 
     /***
      * 获取外网IP

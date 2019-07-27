@@ -1,8 +1,8 @@
 package pers.fancy.chat.bootstrap.channel.http;
 
-import pers.fancy.chat.common.bean.SendInChat;
+import pers.fancy.chat.common.bean.SendChat;
 import pers.fancy.chat.common.constant.HttpConstant;
-import pers.fancy.chat.common.utils.SslUtil;
+import pers.fancy.chat.common.util.SslUtil;
 import com.google.gson.Gson;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
@@ -68,7 +68,7 @@ public class HttpClient {
         URI uri = new URI(HttpConstant.SEND_INCHAT);
 
         Gson gson = new Gson();
-        String content = gson.toJson(new SendInChat(token,value));
+        String content = gson.toJson(new SendChat(token,value));
         DefaultFullHttpRequest request = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.POST,
                 uri.toASCIIString(),Unpooled.wrappedBuffer(content.getBytes(CharsetUtil.UTF_8)));
 

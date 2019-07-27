@@ -3,6 +3,9 @@ package pers.fancy.chat.bootstrap;
 import pers.fancy.chat.common.bean.InitNetty;
 
 
+/**
+ * @author 李醴茝
+ */
 public interface BootstrapServer {
 
     void shutdown();

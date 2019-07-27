@@ -3,16 +3,19 @@ package pers.fancy.chat.common.bean;
 import java.util.Map;
 
 
-public class SendInChat {
+/**
+ * @author 李醴茝
+ */
+public class SendChat {
 
     private String token;
 
     private Map<String,String> frame;
 
-    public SendInChat() {
+    public SendChat() {
     }
 
-    public SendInChat(String token, Map<String, String> frame) {
+    public SendChat(String token, Map<String, String> frame) {
         this.token = token;
         this.frame = frame;
     }

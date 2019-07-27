@@ -1,8 +1,11 @@
-package pers.fancy.chat.common.utils;
+package pers.fancy.chat.common.util;
 
 import java.security.MessageDigest;
 
 
+/**
+ * @author 李醴茝
+ */
 public class RedisUtil {
 
     private static final String STAL = "InChat";
@@ -18,7 +21,9 @@ public class RedisUtil {
         }
         char[] charArray = inStr.toCharArray();
         byte[] byteArray = new byte[charArray.length];
-        for (int i = 0; i < charArray.length; i++) byteArray[i] = (byte) charArray[i];
+        for (int i = 0; i < charArray.length; i++) {
+            byteArray[i] = (byte) charArray[i];
+        }
         byte[] md5Bytes = md5.digest(byteArray);
         StringBuffer hexValue = new StringBuffer();
         for (int i = 0; i < md5Bytes.length; i++) {
@@ -30,19 +35,19 @@ public class RedisUtil {
         return hexValue.toString();
     }
 
-    public static String convertMD5(String address,String token){
-        String inStr = address+"&"+token+"%"+STAL;
+    public static String convertMD5(String address, String token) {
+        String inStr = address + "&" + token + "%" + STAL;
         char[] a = inStr.toCharArray();
-        for (int i = 0; i < a.length; i++){
+        for (int i = 0; i < a.length; i++) {
             a[i] = (char) (a[i] ^ 't');
         }
         String s = new String(a);
         return s;
     }
 
-    public static String convertMD5(String inStr){
+    public static String convertMD5(String inStr) {
         char[] a = inStr.toCharArray();
-        for (int i = 0; i < a.length; i++){
+        for (int i = 0; i < a.length; i++) {
             a[i] = (char) (a[i] ^ 't');
         }
         String s = new String(a);

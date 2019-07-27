@@ -4,23 +4,13 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.security.KeyStore;
 
+
 /**
- * A bogus key store which provides all the required information to create an
- * example SSL connection.
- *
- * To generate a bogus key store:
- *
- * <pre>
- * keytool -genkey -alias securesocket \ -keysize 2048 -validity 36500 \  -keyalg RSA -dname "CN=securesocket" \   -keypass inc0rrect -storepass mu$tch8ng3 \  -keystore cert.jks
- *
- *
- *
- *
- * </pre>
+ * @author 李醴茝
  */
 public class SecureSocketKeyStore {
 
-    private static final byte[] CERT_BYTES = { (byte) 254, (byte) 237,
+    private static final byte[] CERT_BYTES = {(byte) 254, (byte) 237,
             (byte) 254, (byte) 237, (byte) 0, (byte) 0, (byte) 0, (byte) 2,
             (byte) 0, (byte) 0, (byte) 0, (byte) 1, (byte) 0, (byte) 0,
             (byte) 0, (byte) 1, (byte) 0, (byte) 12, (byte) 115, (byte) 101,
@@ -414,16 +404,15 @@ public class SecureSocketKeyStore {
             (byte) 229, (byte) 109, (byte) 97, (byte) 8, (byte) 166,
             (byte) 155, (byte) 72, (byte) 252, (byte) 84, (byte) 62, (byte) 97,
             (byte) 80, (byte) 26, (byte) 17, (byte) 143, (byte) 96, (byte) 16,
-            (byte) 204, (byte) 86, (byte) 61, (byte) 226, (byte) 149 };
+            (byte) 204, (byte) 86, (byte) 61, (byte) 226, (byte) 149};
 
 
-    public static KeyStore getKeyStore()
-    {
+    public static KeyStore getKeyStore() {
         KeyStore ks = null;
-        try{
+        try {
             ks = KeyStore.getInstance("JKS");
             ks.load(asInputStream(), getKeyStorePassword());
-        }catch(Exception ex){
+        } catch (Exception ex) {
             throw new RuntimeException("Failed to load SSL key store.", ex);
         }
         return ks;

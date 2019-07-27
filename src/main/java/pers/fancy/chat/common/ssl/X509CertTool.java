@@ -1,8 +1,6 @@
 package pers.fancy.chat.common.ssl;
 
 
-
-
 import sun.security.x509.*;
 
 import java.io.IOException;
@@ -16,25 +14,25 @@ import java.util.Date;
 
 
 /**
- * This class would require rt.jar in the class path in order to
- * generated it alternative is using keytool.
+ * @author 李醴茝
  */
 public class X509CertTool {
 
     /**
      * Create a self-signed X.509 Certificate
-     * @param dn the X.509 Distinguished Name, eg "CN=Test, L=London, C=GB"
-     * @param pair the KeyPair
-     * @param days how many days from now the Certificate is valid for
+     *
+     * @param dn        the X.509 Distinguished Name, eg "CN=Test, L=London, C=GB"
+     * @param pair      the KeyPair
+     * @param days      how many days from now the Certificate is valid for
      * @param algorithm the signing algorithm, eg "SHA1withRSA"
      */
     @SuppressWarnings("restriction")
     X509Certificate generateCertificate(String dn, KeyPair pair, int days,
                                         String algorithm) throws GeneralSecurityException, IOException {
-        PrivateKey privkey = pair.getPrivate();
+        PrivateKey privateKey = pair.getPrivate();
         X509CertInfo info = new X509CertInfo();
         Date from = new Date();
-        Date to = new Date(from.getTime() + days * 86400000l);
+        Date to = new Date(from.getTime() + days * 86400000L);
         CertificateValidity interval = new CertificateValidity(from, to);
         BigInteger sn = new BigInteger(64, new SecureRandom());
         X500Name owner = new X500Name(dn);
@@ -51,14 +49,14 @@ public class X509CertTool {
 
         // Sign the cert to identify the algorithm that's used.
         X509CertImpl cert = new X509CertImpl(info);
-        cert.sign(privkey, algorithm);
+        cert.sign(privateKey, algorithm);
 
         // Update the algorith, and resign.
         algo = (AlgorithmId) cert.get(X509CertImpl.SIG_ALG);
         info.set(CertificateAlgorithmId.NAME + "."
                 + CertificateAlgorithmId.ALGORITHM, algo);
         cert = new X509CertImpl(info);
-        cert.sign(privkey, algorithm);
+        cert.sign(privateKey, algorithm);
         return cert;
     }
 

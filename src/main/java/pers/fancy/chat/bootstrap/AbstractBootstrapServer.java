@@ -8,7 +8,7 @@ import pers.fancy.chat.common.bean.InitNetty;
 import pers.fancy.chat.common.constant.BootstrapConstant;
 import pers.fancy.chat.common.constant.NotInChatConstant;
 import pers.fancy.chat.common.ssl.SecureSocketSslContextFactory;
-import pers.fancy.chat.common.utils.SslUtil;
+import pers.fancy.chat.common.util.SslUtil;
 import pers.fancy.chat.task.DataAsynchronousTask;
 import io.netty.channel.ChannelPipeline;
 import io.netty.handler.codec.http.HttpObjectAggregator;

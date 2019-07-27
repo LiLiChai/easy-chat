@@ -6,21 +6,16 @@ import pers.fancy.chat.bootstrap.NettyBootstrapServer;
 import pers.fancy.chat.common.bean.InitNetty;
 
 /**
- * InChat项目启动服务
+ * Chat项目启动服务
  *
  * @author 李醴茝
  */
 public abstract class InitServer {
 
-//    private InitNetty serverBean;
 
-
-    // 静态化处理，保证唯一，确保用户启动的是他自己指定的，不是框架的一个数据配置集合
+    /** 静态化处理，保证唯一，确保用户启动的是他自己指定的，不是框架的一个数据配置集合*/
     private static InitNetty serverBean = ConfigFactory.initNetty;
 
-//    public InitServer(InitNetty serverBean) {
-//        this.serverBean = serverBean;
-//    }
     /**
      * netty服务器启动切面
      */

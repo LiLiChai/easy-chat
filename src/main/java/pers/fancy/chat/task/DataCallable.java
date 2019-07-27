@@ -1,7 +1,7 @@
 package pers.fancy.chat.task;
 
-import pers.fancy.chat.bootstrap.data.InChatToDataBaseService;
-import pers.fancy.chat.common.utils.MessageChangeUtil;
+import pers.fancy.chat.bootstrap.data.MessagePersistService;
+import pers.fancy.chat.common.util.MessageChangeUtil;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -16,21 +16,21 @@ public class DataCallable implements Callable<Boolean> {
     /**
      * 用户读数据接口伪实现
      */
-    private final InChatToDataBaseService inChatToDataBaseService;
+    private final MessagePersistService messagePersistService;
 
     /**
      * 消息数据
      */
     private final Map<String, Object> maps;
 
-    DataCallable(InChatToDataBaseService inChatToDataBaseService, Map<String, Object> maps) {
-        this.inChatToDataBaseService = inChatToDataBaseService;
+    DataCallable(MessagePersistService inChatToDataBaseService, Map<String, Object> maps) {
+        this.messagePersistService = inChatToDataBaseService;
         this.maps = maps;
     }
 
     @Override
-    public Boolean call() throws Exception {
-        inChatToDataBaseService.writeMessage(MessageChangeUtil.Change(maps));
+    public Boolean call() {
+        messagePersistService.writeMessage(MessageChangeUtil.Change(maps));
         return true;
     }
 }

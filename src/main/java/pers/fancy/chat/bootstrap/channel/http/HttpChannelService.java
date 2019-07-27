@@ -1,6 +1,6 @@
 package pers.fancy.chat.bootstrap.channel.http;
 
-import pers.fancy.chat.common.bean.SendInChat;
+import pers.fancy.chat.common.bean.SendChat;
 import pers.fancy.chat.common.bean.vo.SendServerVO;
 import io.netty.channel.Channel;
 
@@ -52,6 +52,6 @@ public interface HttpChannelService {
      * @param channel
      * @param sendInChat
      */
-    void sendByInChat(Channel channel, SendInChat sendInChat);
+    void sendByInChat(Channel channel, SendChat sendInChat);
 
 }

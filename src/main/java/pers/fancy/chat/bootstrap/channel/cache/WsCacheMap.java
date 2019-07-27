@@ -5,7 +5,7 @@ import pers.fancy.chat.auto.ConfigFactory;
 import pers.fancy.chat.auto.RedisConfig;
 import pers.fancy.chat.common.exception.NotFindLoginChannelException;
 import pers.fancy.chat.common.constant.NotInChatConstant;
-import pers.fancy.chat.common.utils.RedisUtil;
+import pers.fancy.chat.common.util.RedisUtil;
 import io.netty.channel.Channel;
 import redis.clients.jedis.Jedis;
 

@@ -3,12 +3,12 @@ package pers.fancy.chat.bootstrap.channel.http;
 import com.alibaba.fastjson.JSONObject;
 import pers.fancy.chat.auto.ConfigFactory;
 import pers.fancy.chat.bootstrap.channel.cache.WsCacheMap;
-import pers.fancy.chat.common.bean.SendInChat;
+import pers.fancy.chat.common.bean.SendChat;
 import pers.fancy.chat.common.bean.vo.*;
 import pers.fancy.chat.common.constant.HttpConstant;
 import pers.fancy.chat.common.constant.LogConstant;
 import pers.fancy.chat.common.constant.NotInChatConstant;
-import pers.fancy.chat.common.utils.RedisUtil;
+import pers.fancy.chat.common.util.RedisUtil;
 import com.google.gson.Gson;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -117,7 +117,7 @@ public class HttpChannelServiceImpl implements HttpChannelService {
     }
 
     @Override
-    public void sendByInChat(Channel channel, SendInChat sendInChat) {
+    public void sendByInChat(Channel channel, SendChat sendInChat) {
         Gson gson = new Gson();
         Channel other = WsCacheMap.getByToken(sendInChat.getToken());
         try {

@@ -10,7 +10,7 @@ import pers.fancy.chat.common.constant.HttpConstant;
 import pers.fancy.chat.common.constant.LogConstant;
 import pers.fancy.chat.common.constant.NotInChatConstant;
 import pers.fancy.chat.common.exception.NoFindHandlerException;
-import pers.fancy.chat.common.utils.HttpUtil;
+import pers.fancy.chat.common.util.HttpUtil;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -64,7 +64,7 @@ public class DefaultHandler extends Handler {
         } else {
             throw new NoFindHandlerException(NotInChatConstant.NOT_HANDLER);
         }
-        switch (pers.fancy.chat.common.utils.HttpUtil.checkType(msg)) {
+        switch (pers.fancy.chat.common.util.HttpUtil.checkType(msg)) {
             case HttpConstant.GET_SIZE1:
                 log.info(LogConstant.DEFAULTWEBSOCKETHANDLER_GETSIZE);
                 httpHandlerService.getSize(channel);

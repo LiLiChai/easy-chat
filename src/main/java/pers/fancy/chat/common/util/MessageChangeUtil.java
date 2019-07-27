@@ -1,6 +1,6 @@
-package pers.fancy.chat.common.utils;
+package pers.fancy.chat.common.util;
 
-import pers.fancy.chat.common.bean.InChatMessage;
+import pers.fancy.chat.common.bean.ChatMessage;
 import pers.fancy.chat.common.constant.CommonConstant;
 
 import java.util.ArrayList;
@@ -13,8 +13,8 @@ import java.util.Map;
  */
 public class MessageChangeUtil {
 
-    public static InChatMessage Change(Map<String, Object> maps) {
-        InChatMessage message = new InChatMessage();
+    public static ChatMessage Change(Map<String, Object> maps) {
+        ChatMessage message = new ChatMessage();
         if (maps.containsKey(CommonConstant.TOKEN)) {
             message.setToken((String) maps.get(CommonConstant.TOKEN));
         }

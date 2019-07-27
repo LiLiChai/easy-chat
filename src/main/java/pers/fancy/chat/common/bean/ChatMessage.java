@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * @author 李醴茝
  */
-public class InChatMessage {
+public class ChatMessage {
 
     /**
      * 消息时间
@@ -116,7 +116,7 @@ public class InChatMessage {
 
     @Override
     public String toString() {
-        return "InChatMessage{" +
+        return "ChatMessage{" +
                 "time=" + time +
                 ", type='" + type + '\'' +
                 ", value='" + value + '\'' +

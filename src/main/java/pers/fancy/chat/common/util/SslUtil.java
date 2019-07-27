@@ -1,4 +1,4 @@
-package pers.fancy.chat.common.utils;
+package pers.fancy.chat.common.util;
 
 import pers.fancy.chat.common.constant.UtilConstant;
 

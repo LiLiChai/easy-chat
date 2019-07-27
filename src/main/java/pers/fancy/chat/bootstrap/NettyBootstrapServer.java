@@ -2,9 +2,9 @@ package pers.fancy.chat.bootstrap;
 
 import pers.fancy.chat.auto.AutoConfig;
 import pers.fancy.chat.auto.RedisConfig;
-import pers.fancy.chat.common.ip.IpUtils;
+import pers.fancy.chat.common.util.IpUtil;
 import pers.fancy.chat.common.bean.InitNetty;
-import pers.fancy.chat.common.utils.RemotingUtil;
+import pers.fancy.chat.common.util.RemotingUtil;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelFutureListener;
@@ -66,13 +66,13 @@ public class NettyBootstrapServer extends AbstractBootstrapServer {
                 .childOption(ChannelOption.TCP_NODELAY, serverBean.isNodelay())
                 .childOption(ChannelOption.SO_KEEPALIVE, serverBean.isKeepalive())
                 .childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
-        bootstrap.bind(IpUtils.getHost(), serverBean.getWebport()).addListener((ChannelFutureListener) channelFuture -> {
+        bootstrap.bind(IpUtil.getHost(), serverBean.getWebport()).addListener((ChannelFutureListener) channelFuture -> {
             if (channelFuture.isSuccess()) {
-                log.info("服务端启动成功【" + IpUtils.getHost() + ":" + serverBean.getWebport() + "】");
-                AutoConfig.address = IpUtils.getHost() + ":" + serverBean.getWebport();
+                log.info("服务端启动成功【" + IpUtil.getHost() + ":" + serverBean.getWebport() + "】");
+                AutoConfig.address = IpUtil.getHost() + ":" + serverBean.getWebport();
                 RedisConfig.getInstance();
             } else {
-                log.info("服务端启动失败【" + IpUtils.getHost() + ":" + serverBean.getWebport() + "】");
+                log.info("服务端启动失败【" + IpUtil.getHost() + ":" + serverBean.getWebport() + "】");
             }
         });
     }
@@ -131,7 +131,7 @@ public class NettyBootstrapServer extends AbstractBootstrapServer {
                 bossGroup.shutdownGracefully().sync();
                 workGroup.shutdownGracefully().sync();
             } catch (InterruptedException e) {
-                log.error("服务端关闭资源失败【" + IpUtils.getHost() + ":" + serverBean.getWebport() + "】");
+                log.error("服务端关闭资源失败【" + IpUtil.getHost() + ":" + serverBean.getWebport() + "】");
             }
         }
     }

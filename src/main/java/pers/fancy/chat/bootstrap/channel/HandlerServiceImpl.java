@@ -7,12 +7,12 @@ import pers.fancy.chat.bootstrap.channel.http.HttpChannelService;
 import pers.fancy.chat.bootstrap.channel.http.HttpChannelServiceImpl;
 import pers.fancy.chat.bootstrap.channel.ws.WebSocketChannelService;
 import pers.fancy.chat.common.base.HandlerService;
-import pers.fancy.chat.common.bean.SendInChat;
+import pers.fancy.chat.common.bean.SendChat;
 import pers.fancy.chat.common.bean.vo.SendServerVO;
 import pers.fancy.chat.common.constant.CommonConstant;
 import com.google.gson.Gson;
 import pers.fancy.chat.bootstrap.channel.ws.WsChannelService;
-import pers.fancy.chat.bootstrap.verify.InChatVerifyService;
+import pers.fancy.chat.bootstrap.verify.VerifyService;
 import pers.fancy.chat.task.DataAsynchronousTask;
 import io.netty.channel.Channel;
 import io.netty.handler.codec.http.FullHttpMessage;
@@ -29,7 +29,7 @@ import java.util.Map;
  */
 public class HandlerServiceImpl extends HandlerService {
 
-    private final InChatVerifyService inChatVerifyService;
+    private final VerifyService inChatVerifyService;
 
     private final InChatBackMapService inChatBackMapService = new InChatBackMapServiceImpl();
 
@@ -39,7 +39,7 @@ public class HandlerServiceImpl extends HandlerService {
 
     private final DataAsynchronousTask dataAsynchronousTask;
 
-    public HandlerServiceImpl(DataAsynchronousTask dataAsynchronousTask,InChatVerifyService inChatVerifyService) {
+    public HandlerServiceImpl(DataAsynchronousTask dataAsynchronousTask, VerifyService inChatVerifyService) {
         this.dataAsynchronousTask = dataAsynchronousTask;
         this.inChatVerifyService = inChatVerifyService;
     }
@@ -65,7 +65,7 @@ public class HandlerServiceImpl extends HandlerService {
         System.out.println(msg);
         String content = msg.content().toString(CharsetUtil.UTF_8);
         Gson gson = new Gson();
-        SendInChat sendInChat = gson.fromJson(content,SendInChat.class);
+        SendChat sendInChat = gson.fromJson(content, SendChat.class);
         httpChannelService.sendByInChat(channel,sendInChat);
     }
 

@@ -9,9 +9,9 @@ import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.cert.X509Certificate;
 
+
 /**
- * Bogus {@link TrustManagerFactorySpi} which accepts any certificate
- * even if it is invalid.
+ * @author 李醴茝
  */
 public class SecureSokcetTrustManagerFactory extends TrustManagerFactorySpi {
 
@@ -41,7 +41,7 @@ public class SecureSokcetTrustManagerFactory extends TrustManagerFactorySpi {
     };
 
     public static TrustManager[] getTrustManagers() {
-        return new TrustManager[] { DUMMY_TRUST_MANAGER };
+        return new TrustManager[]{DUMMY_TRUST_MANAGER};
     }
 
     @Override
