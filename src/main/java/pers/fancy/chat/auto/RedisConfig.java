@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
 
 /**
- * 关于redis一些基础东西
  *
  * @author 李醴茝
  */

@@ -10,7 +10,7 @@ import pers.fancy.chat.common.bean.InitNetty;
  *
  * @author 李醴茝
  */
-public abstract class InitServer {
+public class InitServer {
 
 
     /** 静态化处理，保证唯一，确保用户启动的是他自己指定的，不是框架的一个数据配置集合*/
@@ -21,9 +21,7 @@ public abstract class InitServer {
      */
     static BootstrapServer bootstrapServer;
 
-    /**
-     * 主要还是这个{@link NettyBootstrapServer},实例化想要的netty配置服务
-     */
+
     public static void open() {
         if (serverBean != null) {
             bootstrapServer = new NettyBootstrapServer();

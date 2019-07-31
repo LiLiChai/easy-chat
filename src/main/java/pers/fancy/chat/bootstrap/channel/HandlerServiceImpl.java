@@ -1,8 +1,8 @@
 package pers.fancy.chat.bootstrap.channel;
 
 import com.alibaba.fastjson.JSONArray;
-import pers.fancy.chat.bootstrap.backmsg.InChatBackMapService;
-import pers.fancy.chat.bootstrap.backmsg.InChatBackMapServiceImpl;
+import pers.fancy.chat.bootstrap.backmsg.ChatBackMapService;
+import pers.fancy.chat.bootstrap.backmsg.ChatBackMapServiceImpl;
 import pers.fancy.chat.bootstrap.channel.http.HttpChannelService;
 import pers.fancy.chat.bootstrap.channel.http.HttpChannelServiceImpl;
 import pers.fancy.chat.bootstrap.channel.ws.WebSocketChannelService;
@@ -31,11 +31,11 @@ public class HandlerServiceImpl extends HandlerService {
 
     private final VerifyService inChatVerifyService;
 
-    private final InChatBackMapService inChatBackMapService = new InChatBackMapServiceImpl();
+    private final ChatBackMapService inChatBackMapService = new ChatBackMapServiceImpl();
 
     private final HttpChannelService httpChannelService = new HttpChannelServiceImpl();
 
-    private final WsChannelService websocketChannelService = new WebSocketChannelService();
+    private final WsChannelService webSocketChannelService = new WebSocketChannelService();
 
     private final DataAsynchronousTask dataAsynchronousTask;
 
@@ -101,9 +101,9 @@ public class HandlerServiceImpl extends HandlerService {
         //返回给自己
         channel.writeAndFlush(new TextWebSocketFrame(
                 gson.toJson(inChatBackMapService.sendBack(otherOne,value))));
-        if (websocketChannelService.hasOther(otherOne)){
+        if (webSocketChannelService.hasOther(otherOne)){
             //发送给对方--在线
-            Channel other = websocketChannelService.getChannel(otherOne);
+            Channel other = webSocketChannelService.getChannel(otherOne);
             if (other == null){
                 //转http分布式
                 httpChannelService.sendInChat(otherOne,inChatBackMapService.getMsg(token,value));
@@ -133,8 +133,8 @@ public class HandlerServiceImpl extends HandlerService {
                 gson.toJson(inChatBackMapService.sendGroup(token,value,groupId))));
         for (Object item:array) {
             if (!token.equals(item)){
-                if (websocketChannelService.hasOther((String) item)){
-                    Channel other = websocketChannelService.getChannel((String) item);
+                if (webSocketChannelService.hasOther((String) item)){
+                    Channel other = webSocketChannelService.getChannel((String) item);
                     if (other == null){
                         //转http分布式
                         httpChannelService.sendInChat((String) item,inChatBackMapService.sendGroup(token,value,groupId));
@@ -186,7 +186,7 @@ public class HandlerServiceImpl extends HandlerService {
         String token = (String) maps.get(CommonConstant.TOKEN);
         if (inChatVerifyService.verifyToken(token)){
             channel.writeAndFlush(new TextWebSocketFrame(gson.toJson(inChatBackMapService.loginSuccess())));
-            websocketChannelService.loginWsSuccess(channel,token);
+            webSocketChannelService.loginWsSuccess(channel,token);
             return true;
         }
         channel.writeAndFlush(new TextWebSocketFrame(gson.toJson(inChatBackMapService.loginError())));
@@ -196,6 +196,6 @@ public class HandlerServiceImpl extends HandlerService {
 
     @Override
     public void close(Channel channel) {
-        websocketChannelService.close(channel);
+        webSocketChannelService.close(channel);
     }
 }

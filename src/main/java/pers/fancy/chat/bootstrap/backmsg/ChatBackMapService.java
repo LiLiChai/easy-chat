@@ -8,7 +8,7 @@ import java.util.Map;
  *
  * @author 李醴茝
  */
-public interface InChatBackMapService {
+public interface ChatBackMapService {
 
     /**
      * 登录成功返回信息

@@ -10,7 +10,7 @@ import java.util.Map;
  *
  * @author 李醴茝
  */
-public class InChatBackMapServiceImpl implements InChatBackMapService {
+public class ChatBackMapServiceImpl implements ChatBackMapService {
 
 
     @Override

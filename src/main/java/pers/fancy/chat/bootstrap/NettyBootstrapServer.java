@@ -42,12 +42,9 @@ public class NettyBootstrapServer extends AbstractBootstrapServer {
 
     private EventLoopGroup workGroup;
 
-    // 启动辅助类
     ServerBootstrap bootstrap = null;
 
-    /**
-     * 服务开启
-     */
+
     @Override
     public void start() {
         initEventPool();
@@ -78,7 +75,7 @@ public class NettyBootstrapServer extends AbstractBootstrapServer {
     }
 
     /**
-     * 初始化EnentPool 参数
+     * 初始化EventPool 参数
      */
     private void initEventPool() {
         bootstrap = new ServerBootstrap();
@@ -120,14 +117,11 @@ public class NettyBootstrapServer extends AbstractBootstrapServer {
         }
     }
 
-    /**
-     * 关闭资源
-     */
+
     @Override
     public void shutdown() {
         if (workGroup != null && bossGroup != null) {
             try {
-                // 优雅关闭
                 bossGroup.shutdownGracefully().sync();
                 workGroup.shutdownGracefully().sync();
             } catch (InterruptedException e) {

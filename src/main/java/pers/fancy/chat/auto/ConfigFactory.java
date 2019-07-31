@@ -7,21 +7,31 @@ import pers.fancy.chat.common.bean.InitNetty;
 
 /**
  * 默认配置工厂
+ *
+ * @author 李醴茝
  */
 public class ConfigFactory {
 
     public static String RedisIP;
 
-    /** 用户校验伪接口 */
+    /**
+     * 用户校验伪接口
+     */
     public static VerifyService inChatVerifyService;
 
-    /** 用户获取数据伪接口 */
+    /**
+     * 用户获取数据伪接口
+     */
     public static MessagePersistService inChatToDataBaseService;
 
-    /** 系统信息枚举服务接口 */
+    /**
+     * 系统信息枚举服务接口
+     */
     public static FromServerService fromServerService;
 
-    /** InChat项目配置 */
+    /**
+     * InChat项目配置
+     */
     public static InitNetty initNetty;
 
 }

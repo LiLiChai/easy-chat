@@ -12,8 +12,8 @@ public enum  FromServerServiceImpl implements FromServerService {
     /**
      *
      */
-    TYPE1(1,"【系统通知】您的账号存在异常，请注意安全保密信息。"),
-    TYPE2(2,"【系统通知】恭喜您连续登录超过5天，奖励5积分。");
+    TYPE1(1,"【系统通知1】"),
+    TYPE2(2,"【系统通知2】");
 
     private Integer code;
     private String message;

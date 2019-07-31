@@ -35,7 +35,7 @@ public abstract class AbstractBootstrapServer implements BootstrapServer {
 
     private String PROTOCOL = "TLS";
 
-    private SSLContext SERVER_CONTEXT;
+//    private SSLContext SERVER_CONTEXT;
 
     /**
      * @param channelPipeline channelPipeline
@@ -71,29 +71,29 @@ public abstract class AbstractBootstrapServer implements BootstrapServer {
         channelPipeline.addLast(BootstrapConstant.WEB_SOCKET_HANDLER, new WebSocketServerProtocolHandler(serverBean.getWebSocketPath()));
     }
 
-    private void initSsl(InitNetty serverBean) {
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        executorService.submit(() -> {
-        });
-        String algorithm = SystemPropertyUtil.get("ssl.KeyManagerFactory.algorithm");
-        if (algorithm == null) {
-            algorithm = "SunX509";
-        }
-        SSLContext serverContext;
-        try {
-            //
-            KeyStore ks = KeyStore.getInstance("JKS");
-            ks.load(SecureSocketSslContextFactory.class.getResourceAsStream(serverBean.getJksFile()),
-                    serverBean.getJksStorePassword().toCharArray());
-            KeyManagerFactory kmf = KeyManagerFactory.getInstance(algorithm);
-            kmf.init(ks, serverBean.getJksCertificatePassword().toCharArray());
-            serverContext = SSLContext.getInstance(PROTOCOL);
-            serverContext.init(kmf.getKeyManagers(), null, null);
-        } catch (Exception e) {
-            throw new Error(
-                    "Failed to initialize the server-side SSLContext", e);
-        }
-        SERVER_CONTEXT = serverContext;
-    }
+//    private void initSsl(InitNetty serverBean) {
+//        ExecutorService executorService = Executors.newCachedThreadPool();
+//        executorService.submit(() -> {
+//        });
+//        String algorithm = SystemPropertyUtil.get("ssl.KeyManagerFactory.algorithm");
+//        if (algorithm == null) {
+//            algorithm = "SunX509";
+//        }
+//        SSLContext serverContext;
+//        try {
+//            //
+//            KeyStore ks = KeyStore.getInstance("JKS");
+//            ks.load(SecureSocketSslContextFactory.class.getResourceAsStream(serverBean.getJksFile()),
+//                    serverBean.getJksStorePassword().toCharArray());
+//            KeyManagerFactory kmf = KeyManagerFactory.getInstance(algorithm);
+//            kmf.init(ks, serverBean.getJksCertificatePassword().toCharArray());
+//            serverContext = SSLContext.getInstance(PROTOCOL);
+//            serverContext.init(kmf.getKeyManagers(), null, null);
+//        } catch (Exception e) {
+//            throw new Error(
+//                    "Failed to initialize the server-side SSLContext", e);
+//        }
+//        SERVER_CONTEXT = serverContext;
+//    }
 
 }
